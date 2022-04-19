@@ -26,9 +26,9 @@ class Biodata(models.Model):
     last_name = models.CharField(max_length=50)
     other_name = models.CharField(max_length=50)
     date_of_birth = models.DateField()
-    gender = models.ForeignKey(Gender ,default=1, on_delete=models.CASCADE)
-    nationality = models.ForeignKey(Country ,default='', on_delete=models.CASCADE)
-    created_by = models.ForeignKey(User, on_delete=models.CASCADE)
+    gender = models.ForeignKey(Gender, on_delete=models.CASCADE)
+    nationality = models.ForeignKey(Country, on_delete=models.CASCADE)
+    created_by = models.ForeignKey(User, on_delete=models.CASCADE,null=True,blank=True)
     passport = models.ImageField(null=True, blank=True, default="default.jpg")
 
     def __str__(self):

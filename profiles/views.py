@@ -19,15 +19,14 @@ def BiodataViews(request):
         last_name = request.POST.get('last_name',"")
         other_name = request.POST.get('other_namer',"")
         date_of_birth = request.POST.get('date_of_birth',"")
-        gender = request.POST.get('gender',"")
+        gender = request.POST.get('gender')
         nationality = request.POST.get('nationality',"")
         # created_by = request.POST.get(' created_by',"")
         passport = request.FILES.get('passport',"")
 
-        bio = Biodata(file_number=file_number,first_name=first_name,last_name=last_name,other_name=other_name,
-                      date_of_birth=date_of_birth,gender=gender, nationality=nationality,passport=passport)
+        bio = Biodata(file_number=file_number,first_name=first_name,last_name=last_name,other_name=other_name,date_of_birth=date_of_birth,gender_id=gender,nationality_id=nationality,passport=passport)
         bio.save()
-        return redirect("/") 
+        return redirect("index") 
     context = {'gend':gend,'con':con}           
     return render(request,  'profiles/Bio-form.html', context)
 
