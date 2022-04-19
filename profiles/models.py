@@ -3,14 +3,31 @@ from django.contrib.auth.models import User
 
 # Create your models here.
 
+class Gender(models.Model):
+    created_by = models.ForeignKey(User, on_delete=models.CASCADE)
+    title = models.CharField(max_length=6)
+
+    def __str__(self):
+        return self.title
+
+
+class Country(models.Model):
+    created_by = models.ForeignKey(User, on_delete=models.CASCADE)
+    title = models.CharField(max_length=20)
+
+    def __str__(self):
+        return self.title
+
+
+
 class Biodata(models.Model):
     file_number = models.IntegerField(unique=True)
     first_name = models.CharField(max_length=50)
     last_name = models.CharField(max_length=50)
     other_name = models.CharField(max_length=50)
     date_of_birth = models.DateField()
-    gender = models.ForeignKey('Gender', on_delete=models.CASCADE)
-    nationality = models.ForeignKey('Country', on_delete=models.CASCADE)
+    gender = models.ForeignKey(Gender ,default=1, on_delete=models.CASCADE)
+    nationality = models.ForeignKey(Country ,default='', on_delete=models.CASCADE)
     created_by = models.ForeignKey(User, on_delete=models.CASCADE)
     passport = models.ImageField(null=True, blank=True, default="default.jpg")
 
@@ -29,20 +46,6 @@ class Biodata(models.Model):
         return img     
 
 
-class Gender(models.Model):
-    created_by = models.ForeignKey(User, on_delete=models.CASCADE)
-    title = models.CharField(max_length=6)
-
-    def __str__(self):
-        return self.title
-
-
-class Country(models.Model):
-    created_by = models.ForeignKey(User, on_delete=models.CASCADE)
-    title = models.CharField(max_length=20)
-
-    def __str__(self):
-        return self.title
 
 
 class SalaryScale(models.Model):
