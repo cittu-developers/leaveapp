@@ -32,7 +32,7 @@ class Biodata(models.Model):
     passport = models.ImageField(null=True, blank=True, default="default.jpg")
 
     def __str__(self):
-        return str(self.first_name)
+        return str(self.file_number)
 
 
     @property
