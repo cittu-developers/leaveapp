@@ -1,11 +1,14 @@
-from django.contrib import admin
 from django.urls import path
-from .views import login_view, logout_view#, account_setting_view
+from .import views
 
 urlpatterns = [
-    # path('accounts/registration/', registration_view, name='register'),
-    path('', login_view, name='auth_login'),
-    # path("account_setting/<user_id>/", account_setting_view, name="account_setting"),
-    path('accounts/logout/', logout_view, name='auth_logout'),
+    path('',views.loginPage, name='login'),
+    path('index/',views.index, name='index'),
+    path('register/',views.registerUser, name='register'),
+    path('logout/',views.logoutUser, name='logout'),
 
+    path('profile/', views.userProfile, name='profile'),
+    path('update/',views.updateUser, name= 'update'),
+    path('staff_biodata/<id>/', views.staff_biodata_summary, name='staff_biodata'),
 ]
+

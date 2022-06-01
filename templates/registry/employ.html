@@ -1,0 +1,119 @@
+
+    {% extends "layouts/base.html" %}
+    {% load static %}
+    {% block title %} Form Elements {% endblock %} 
+    
+    <!-- Specific CSS goes HERE -->
+    {% block stylesheets %}{% endblock stylesheets %}
+    
+    {% block content %}	
+        <!-- [ Main Content ] start -->
+    <section class="pcoded-main-container">
+        <div class="pcoded-content">
+            <!-- [ breadcrumb ] start -->
+            <div class="page-header">
+                <div class="page-block">
+                    <div class="row align-items-center">
+                        <div class="col-md-12">    
+                            <ul class="breadcrumb">
+                                <li class="breadcrumb-item"><a href="index.html"><i class="feather icon-home"></i></a></li>
+                                <li class="breadcrumb-item"><a href="#!">Form Components</a></li>
+                                <li class="breadcrumb-item"><a href="#!">Form Elements</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+                <!-- [ breadcrumb ] end -->
+                <!-- [ Main Content ] start -->
+    <div class="row">
+    <!-- [ form-element ] start -->
+    <div class="col-sm-12">
+        <div class="card">
+        <div class="card-header">
+        <h3>Employment Form</h3>
+    </div>
+        <div class="card-body">
+        <span class="mb-0 text-muted">
+    {% for message in messages %}
+    <p ><h2 style="background-color:red; color: white; width: 100%; text-align: center;">
+    {{message}}</h2></p>
+    {% endfor %} 
+    </span>
+    <hr>
+    <div class="row">
+    <div class="col-md-6">
+    <form method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+
+        <div class="form-group">
+            <b><label>User</label></b>
+            <select class="form-control" name="user">
+                <option value="">Select </option>
+                {% for i in last_data %}
+                <option value="{{i.id}}">{{i.username}}</option>
+                {% endfor %}
+            </select>
+        </div>
+        <div class="form-group">
+            <b><label>Ministry</label></b>
+            <input id="ministry" class="form-control" name="ministry" placeholder="Enter ministry" required>
+        </div>
+        
+        
+        </div>
+        
+        
+        <button type="submit" name="register" class="btn btn-primary btn-block mb-4">Sign up</button>
+
+    </div>
+    
+    <div class="col-md-6">
+    
+        <div class="form-group">
+            <b><label>Salary Scale</label></b>
+            <select class="form-control" name="salary_scale">
+                <option value="">Select </option>
+                {% for i in salary %}
+                <option value="{{i.id}}">{{i.title}}</option>
+                {% endfor %}
+            </select>
+        </div>
+        <div class="form-group">
+            <b><label>Grade</label></b>
+            <input type="number" class="form-control" name="grade" placeholder="Enter grade" required>
+        </div>
+        <div class="form-group">
+            <b><label>Step</label></b>
+            <input type="number" class="form-control" name="step" placeholder=" step" required>
+        </div>
+        
+        <div class="form-group">
+            <b><label for="exampleInputPassword1">IPPIS Number</label></b>
+            <input type="number" class="form-control" name="ippis_no" placeholder="Ippis No" required>
+        </div>
+        
+        <div class="form-group">
+    </div>
+   
+    </form>
+   
+            </select>
+        </div>                       
+    </form>
+       </div>
+         </div>
+           </div>                           
+            </div>
+            </div>
+            </div>
+            </div>
+        </section>
+        <!-- [ Main Content ] end -->
+    
+    {% endblock content %}
+    
+    <!-- Specific Page JS goes HERE  -->
+    {% block javascripts %}{% endblock javascripts %}
+    
+    
